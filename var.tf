@@ -45,6 +45,11 @@ variable "enable_nat_gateway" {
   description = "Enable or disable the NAT gateway. Enter a boolean value 'true' or 'false'."
   default     = true
 }
+variable "aws_ecr_repository" {
+  type        = string
+  description = "ECR repo name"
+  default     = "demo_ecs_app"
+}
 
 variable "environment" {
   type        = string
