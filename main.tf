@@ -100,7 +100,7 @@ resource "aws_ecs_cluster" "ecs-cluster" {
 }
 
 data "template_file" "demo_ecs_app" {
-  template = file("./templates/demo_ecs_app.json.tpl")
+  template = file("./temp/demo_ecs_app.json.tpl")
   vars = {
     app_image      = "634441478571.dkr.ecr.ap-south-1.amazonaws.com/demo-app:latest",
     app_port       = var.app_port,
