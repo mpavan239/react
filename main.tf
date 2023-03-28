@@ -107,7 +107,7 @@ data "template_file" "demo_ecs_app" {
     fargate_cpu    = var.fargate_cpu,
     fargate_memory = var.fargate_memory,
     tag            = var.tag,
-    name           = var.aws_ecr_repository
+    name           = demo-ecs-app
   }
 }
 
@@ -132,7 +132,7 @@ resource "aws_ecs_task_definition" "demo_ecs_app_def" {
   #   container_definitions    = data.template_file.demo_ecs_app.render
   container_definitions = jsonencode([
     {
-      name   = var.aws_ecr_repository
+      name   = demo-ecs-app
       image  = "634441478571.dkr.ecr.ap-south-1.amazonaws.com/demo-app:latest"
       cpu    = var.fargate_cpu
       memory = var.fargate_memory
@@ -162,11 +162,11 @@ resource "aws_ecs_service" "main" {
   load_balancer {
     target_group_arn = aws_alb_target_group.app.id
     container_port   = var.app_port
-    container_name   = var.aws_ecr_repository
+    container_name   = demo-ecs-app
   }
 
   depends_on = [
-    aws_ecr_repository.demo_ecs_app,
+    aws_ecr_repository.demo-app,
     aws_ecs_task_definition.demo_ecs_app_def,
     module.vpc
   ]
