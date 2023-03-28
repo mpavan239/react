@@ -25,7 +25,7 @@ variable "aws_vpc_cidr" {
 variable "aws_vpc_azs" {
   type        = list(string)
   description = "Add list of AZs available in the region that you want to use. Example ['ap-south-1a', 'ap-south-1b', 'ap-south-1c']"
-  default     = ["us-west-1a", "us-west-1b"]
+  default     = ["us-west-1c", "us-west-1b"]
 }
 
 variable "aws_vpc_private_subnets" {
