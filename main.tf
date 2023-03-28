@@ -94,16 +94,7 @@ resource "aws_alb_listener" "front_end" {
     type             = "forward"
   }
 }
-resource "aws_ecr_repository" "demo_ecs_app" {
-  name                 = var.aws_ecr_repository
-  image_tag_mutability = "MUTABLE"
-  image_scanning_configuration {
-    scan_on_push = true
-  }
-  tags = {
-    "env" = var.environment
-  }
-}
+
 resource "aws_ecs_cluster" "ecs-cluster" {
   name = var.aws_ecs_cluster_name
 }
@@ -142,7 +133,7 @@ resource "aws_ecs_task_definition" "demo_ecs_app_def" {
   container_definitions = jsonencode([
     {
       name   = var.aws_ecr_repository
-      image  = "600023384173.dkr.ecr.ap-south-1.amazonaws.com/demo_ecs_app:latest"
+      image  = "634441478571.dkr.ecr.ap-south-1.amazonaws.com/demo-app:latest"
       cpu    = var.fargate_cpu
       memory = var.fargate_memory
       portMappings = [

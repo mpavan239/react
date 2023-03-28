@@ -64,11 +64,6 @@ variable "aws_ecs_cluster_name" {
   default     = "demo-ecs-cluster"
 }
 
-variable "aws_ecr_repository" {
-  type        = string
-  description = "ECR repo name"
-  default     = "demo_ecs_app"
-}
 
 variable "aws_ecs_task_def_fam" {
   type        = string
