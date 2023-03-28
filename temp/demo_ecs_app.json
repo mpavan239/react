@@ -5,15 +5,15 @@
     "family": "demo_ecs_fam",
     "containerDefinitions": [
         {
-            "name": "demo_ecs_app",
+            "name": "demo-ecs-app ",
             "image": "634441478571.dkr.ecr.ap-south-1.amazonaws.com/demo-app:latest",
             "essential": true,
             "cpu": "1024",
             "memory":"2048",
             "portMappings": [
               {
-                "containerPort": 80,
-                "hostPort"     : 80
+                "containerPort": 3000,
+                "hostPort"     : 3000
               }
             ]
   
