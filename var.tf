@@ -1,6 +1,6 @@
 variable "aws_region" {
   description = "Add AWS region."
-  default     = "ap-south-1"
+  default     = "us-west-1"
   type        = string
 }
 
@@ -25,7 +25,7 @@ variable "aws_vpc_cidr" {
 variable "aws_vpc_azs" {
   type        = list(string)
   description = "Add list of AZs available in the region that you want to use. Example ['ap-south-1a', 'ap-south-1b', 'ap-south-1c']"
-  default     = ["ap-south-1a", "ap-south-1b"]
+  default     = ["us-west-1a", "us-west-1b"]
 }
 
 variable "aws_vpc_private_subnets" {
@@ -44,11 +44,6 @@ variable "enable_nat_gateway" {
   type        = bool
   description = "Enable or disable the NAT gateway. Enter a boolean value 'true' or 'false'."
   default     = true
-}
-variable "aws_ecr_repository" {
-  type        = string
-  description = "ECR repo name"
-  default     = "demo_ecs_app"
 }
 
 variable "environment" {
