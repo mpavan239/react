@@ -104,7 +104,7 @@ resource "aws_ecs_cluster" "ecs-cluster" {
 data "template_file" "demo_ecs_app" {
   template = file("./temp/demo_ecs_app.json.tpl")
   vars = {
-    app_image      = "634441478571.dkr.ecr.ap-south-1.amazonaws.com/demo-app:latest",
+    app_image      = "634441478571.dkr.ecr.us-west-1.amazonaws.com/demo-app",
     app_port       = var.app_port,
     fargate_cpu    = var.fargate_cpu,
     fargate_memory = var.fargate_memory,
@@ -135,7 +135,7 @@ resource "aws_ecs_task_definition" "demo_ecs_app_def" {
   container_definitions = jsonencode([
     {
       name   = "demo-ecs-app"
-      image  = "634441478571.dkr.ecr.ap-south-1.amazonaws.com/demo-app:latest"
+      image  = "634441478571.dkr.ecr.us-west-1.amazonaws.com/demo-app"
       cpu    = var.fargate_cpu
       memory = var.fargate_memory
       portMappings = [
