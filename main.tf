@@ -107,7 +107,7 @@ data "template_file" "demo_ecs_app" {
     fargate_cpu    = var.fargate_cpu,
     fargate_memory = var.fargate_memory,
     tag            = var.tag,
-    name           = demo-ecs-app
+    name           = "demo-ecs-app"
   }
 }
 
@@ -162,11 +162,10 @@ resource "aws_ecs_service" "main" {
   load_balancer {
     target_group_arn = aws_alb_target_group.app.id
     container_port   = var.app_port
-    container_name   = demo-ecs-app
+    container_name   = "demo-ecs-app"
   }
 
   depends_on = [
-    aws_ecr_repository.demo-app,
     aws_ecs_task_definition.demo_ecs_app_def,
     module.vpc
   ]
