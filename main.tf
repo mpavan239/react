@@ -132,7 +132,7 @@ resource "aws_ecs_task_definition" "demo_ecs_app_def" {
   #   container_definitions    = data.template_file.demo_ecs_app.render
   container_definitions = jsonencode([
     {
-      name   = demo-ecs-app
+      name   = "demo-ecs-app"
       image  = "634441478571.dkr.ecr.ap-south-1.amazonaws.com/demo-app:latest"
       cpu    = var.fargate_cpu
       memory = var.fargate_memory
